@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <h2>Task 3 - Fizz Buzz Baz</h2>
+
+    <p id="input-numbers"></p>
+
+    <p id="result"></p>
+
+    <script>
+        const numbers = [2, 3, 10, 11, 12, 22, 33, 297, 3045];
+        document.getElementById("input-numbers").innerHTML = numbers;
+
+        function stringSumThree(value) {
+            // map()/.reduce() used to add all digits in number
+            sum = value.toString().split('').map(Number)
+                .reduce(function(a, b) {
+                    return a + b;
+                }, 0);
+            if (sum % 3 === 0) {
+                return true
+            } else {
+                return false
+            }
+        }
+
+        function stringSumEleven(value) {
+            // splits string into chunks of 2 reading right to left, reversed to get correct pairing
+            // Returns an array of strings
+            var sumString = value.toString().split("").reverse().join("").match(/.{1,2}/g);
+            let val = 0
+            for (value of sumString) {
+                // reverses the pairs into correct order for adding pairs together
+                val = val + parseInt(value.split("").reverse().join(""));
+            }
+            if (val % 11 === 0) {
+                return true
+            } else {
+                return false
+            }
+        }
+
+        function fizzBuzzBazz(array) {
+            const results = []
+            for (value of array) {
+                if (stringSumThree(value) === true && stringSumEleven(value) === true) {
+                    results.push("Fizzbuzz")
+                } else if (stringSumThree(value) === true) {
+                    results.push("Fizz")
+                } else if (stringSumEleven(value) === true) {
+                    results.push("Buzz")
+                } else {
+                    results.push("Baz")
+                }
+            }
+            return results
+        }
+
+        let returned_data = fizzBuzzBazz(numbers)
+
+        document.getElementById("result").innerHTML = returned_data;
+
+        /*
+        This task help me apprecite inbuilt functions and lifted the lid so to speak.
+        Refactoring futher I would find a quicker way to achieve spliting into pairs 
+        for the eleven function without reversing twice, and refactor both functions into
+        one.
+        */
+    </script>
+
+</body>
+
+</html>

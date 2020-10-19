@@ -48,9 +48,23 @@ def fizz_buzz(array):
 
 
 def run():
-    output = fizz_buzz(numbers)
-    print(numbers)
-    print(output)
+    print(f"Current Numbers: {numbers}")
+    cmd = input(f"Input 'run' or 'q' to quit: ")
+    if cmd == 'run':
+        output = fizz_buzz(numbers)
+        print(f"Output: {output}")
+        repeat = input("Run again? (y): ")
+        if repeat == 'y':
+            run()
+        else:
+            print("Thanks!")
+    elif cmd == 'q':
+        print("Thanks!")
+    else:
+        print()
+        print("Invalid command!")
+        print()
+        run()
 
 run()
 

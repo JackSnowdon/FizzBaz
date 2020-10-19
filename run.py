@@ -49,7 +49,7 @@ def fizz_buzz(array):
 
 def run():
     print(f"Current Numbers: {numbers}")
-    cmd = input(f"Input 'run' or 'q' to quit: ")
+    cmd = input(f"Input 'run', 'add' or 'q' to quit: ")
     if cmd == 'run':
         output = fizz_buzz(numbers)
         print(f"Output: {output}")
@@ -58,6 +58,14 @@ def run():
             run()
         else:
             print("Thanks!")
+    elif cmd == 'add':
+        num = input("Input number to add to array: ")
+        if num.isdigit():
+            print(f"Added {num} to numbers")
+            numbers.append(int(num))
+        else:
+            print(f"{num} is not a number")
+        run()
     elif cmd == 'q':
         print("Thanks!")
     else:
